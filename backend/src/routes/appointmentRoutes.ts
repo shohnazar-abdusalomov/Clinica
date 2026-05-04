@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import * as ctrl from '../controllers/appointmentController';
+import { authMiddleware } from '../middleware/auth';
+import { roleGuard } from '../middleware/roleGuard';
+const router = Router();
+router.use(authMiddleware);
+router.get('/', ctrl.getAllAppointments);
+router.post('/', ctrl.createAppointment);
+router.put('/:id', ctrl.updateAppointment);
+router.delete('/:id', roleGuard('admin', 'cashier'), ctrl.deleteAppointment);
+export default router;

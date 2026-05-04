@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import * as ctrl from '../controllers/medicalRecordController';
+import { authMiddleware } from '../middleware/auth';
+import { roleGuard } from '../middleware/roleGuard';
+const router = Router();
+router.use(authMiddleware);
+router.get('/', roleGuard('admin', 'doctor'), ctrl.getAllMedicalRecords);
+router.post('/', roleGuard('admin', 'doctor'), ctrl.createMedicalRecord);
+router.put('/:id', roleGuard('admin', 'doctor'), ctrl.updateMedicalRecord);
+export default router;

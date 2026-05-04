@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import * as ctrl from '../controllers/prescriptionController';
+import { authMiddleware } from '../middleware/auth';
+import { roleGuard } from '../middleware/roleGuard';
+const router = Router();
+router.use(authMiddleware);
+router.get('/', ctrl.getAllPrescriptions);
+router.post('/', roleGuard('admin', 'doctor'), ctrl.createPrescription);
+router.put('/:id', roleGuard('admin', 'doctor'), ctrl.updatePrescription);
+export default router;

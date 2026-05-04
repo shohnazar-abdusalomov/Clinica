@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import * as ctrl from '../controllers/paymentController';
+import { authMiddleware } from '../middleware/auth';
+import { roleGuard } from '../middleware/roleGuard';
+const router = Router();
+router.use(authMiddleware);
+router.get('/', roleGuard('admin', 'cashier'), ctrl.getAllPayments);
+router.post('/', roleGuard('admin', 'cashier'), ctrl.createPayment);
+router.put('/:id/confirm', roleGuard('admin', 'cashier'), ctrl.confirmPayment);
+router.put('/:id', roleGuard('admin', 'cashier'), ctrl.updatePayment);
+export default router;

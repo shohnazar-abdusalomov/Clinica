@@ -1,0 +1,73 @@
+/* Dark mode overrides for custom Tailwind classes */
+:root {
+  --accent-color: #3B82F6;
+  --accent-color-light: #3B82F620;
+}
+
+/* Smooth theme transition */
+*, *::before, *::after {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+/* Dark mode — bg overrides */
+.dark body {
+  background-color: #0f1117;
+  color: #e5e7eb;
+}
+
+.dark .bg-white { background-color: #1a1d27 !important; }
+.dark .bg-gray-50 { background-color: #13151f !important; }
+.dark .bg-gray-100 { background-color: #1e2130 !important; }
+
+.dark .border-gray-100 { border-color: #2a2d3e !important; }
+.dark .border-gray-200 { border-color: #2a2d3e !important; }
+.dark .border-gray-50  { border-color: #1e2130 !important; }
+
+.dark .text-gray-900 { color: #f1f5f9 !important; }
+.dark .text-gray-800 { color: #e2e8f0 !important; }
+.dark .text-gray-700 { color: #cbd5e1 !important; }
+.dark .text-gray-600 { color: #94a3b8 !important; }
+.dark .text-gray-500 { color: #64748b !important; }
+.dark .text-gray-400 { color: #475569 !important; }
+
+.dark .hover\:bg-gray-50:hover { background-color: #1e2130 !important; }
+.dark .hover\:bg-gray-100:hover { background-color: #252838 !important; }
+.dark .hover\:bg-blue-50\/30:hover { background-color: rgba(59,130,246,0.08) !important; }
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1e2130 !important;
+  border-color: #2a2d3e !important;
+  color: #e2e8f0 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #475569 !important;
+}
+
+/* Accent color utility */
+.accent-bg { background-color: var(--accent-color) !important; }
+.accent-text { color: var(--accent-color) !important; }
+.accent-border { border-color: var(--accent-color) !important; }
+.accent-bg-light { background-color: var(--accent-color-light) !important; }
+
+/* Spinner animation */
+@keyframes spin-smooth {
+  to { transform: rotate(360deg); }
+}
+.spinner {
+  animation: spin-smooth 0.8s linear infinite;
+}
+
+/* Pulse dot animation */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* Toast custom */
+[data-sonner-toast] {
+  font-family: inherit !important;
+}
